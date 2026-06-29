@@ -3,4 +3,4 @@ pandas
 pyarrow
 mne
 numpy
-mne-qt-browser
+matplotlib
