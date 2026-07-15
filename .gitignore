@@ -3,9 +3,12 @@ EEG_data
 .DS_Store
 build_dataset.py
 eeg_parser.py
+build_dataset_old.py
+eeg_parser_old.py
 qc.py
 config.local.json
 check.py
+/report
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
