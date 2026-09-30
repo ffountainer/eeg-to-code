@@ -21,15 +21,17 @@ class EEGDataset(Dataset):
 
     def __getitem__(self, idx: int):
 
+        # one input is one epoch
+
         session_idx, stage, epoch_idx = self.index_from_idx[idx]
 
         mn_tensors = self.main[session_idx].get_tensors()
-        main_raw = mn_tensors[stage]["raw"][epoch_idx]
-        main_feature = mn_tensors[stage]["processed"][epoch_idx]
+        main_raw = mn_tensors[stage]["st_raw"][epoch_idx] # (n_channels, n_times)
+        main_feature = mn_tensors[stage]["st_processed"][epoch_idx] # (234)
 
         bs_tensors = self.baseline[session_idx].get_tensors()
-        bs_open = bs_tensors["eyes open"]["processed"]
-        bs_closed = bs_tensors["eyes closed"]["processed"]
+        bs_open = bs_tensors["eyes open"]["st_processed"] # (234)
+        bs_closed = bs_tensors["eyes closed"]["st_processed"] # (234)
 
         data = {
             "raw": main_raw,
